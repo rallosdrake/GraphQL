@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "unitName": "Unit 001",
+    "moveSpeed": 6,
+    "shootValue": 4,
+    "fightValue": 5,
+    "healthPoints": 2,
+    "leadershipValue": 8,
+    "pointValue": 30
+  },
+  {
+    "id": 2,
+    "unitName": "Unit 002",
+    "moveSpeed": 4,
+    "shootValue": 3,
+    "fightValue": 2,
+    "healthPoints": 2,
+    "leadershipValue": 6,
+    "pointValue": 15
+  },
+  {
+    "id": 3,
+    "unitName": "Unit 003",
+    "moveSpeed": 8,
+    "shootValue": 2,
+    "fightValue": 2,
+    "healthPoints": 1,
+    "leadershipValue": 5,
+    "pointValue": 10
+  }
+]

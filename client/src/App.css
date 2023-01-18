@@ -40,3 +40,9 @@
 .user-container {
   border: 3px solid black;
 }
+.unit-container {
+  border: 5px solid black;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+}

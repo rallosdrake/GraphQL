@@ -8,6 +8,7 @@ import {
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import LoadUsers from "./Components/LoadUsers";
+import AllUnits from "./Components/AllUnits";
 import Form from "./Components/Form";
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
@@ -32,6 +33,7 @@ function App() {
     <div className="App">
       <ApolloProvider client={client}>
         <Form />
+        <AllUnits />
       </ApolloProvider>
     </div>
   );

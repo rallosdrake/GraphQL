@@ -1,4 +1,5 @@
 const UserType = require("./TypeDefs/UserType.js");
+const UnitType = require("./TypeDefs/UnitType.js");
 const graphql = require("graphql");
 const {
   GraphQLObjectType,
@@ -7,25 +8,43 @@ const {
   GraphQLString,
   GraphQLList,
 } = graphql;
-const userData = require("../utils/MOCK_DATA.json");
+// const userData = require("../utils/MOCK_DATA.json");
+const unitData = require("../utils/MOCK_UNIT_DATA.json");
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
-    getAllUsers: {
-      type: new GraphQLList(UserType),
+    getAllUnits: {
+      type: new GraphQLList(UnitType),
       args: {
         id: { type: GraphQLInt },
         limit: { type: GraphQLInt },
       },
       resolve(parent, args) {
-        console.log(args);
-        const { limit } = args;
-        return userData.slice(0, limit);
+        const { limit, id } = args;
+        return unitData.slice(0, limit);
       },
     },
   },
 });
+
+// const RootQuery = new GraphQLObjectType({
+//   name: "RootQueryType",
+//   fields: {
+//     getAllUsers: {
+//       type: new GraphQLList(UserType),
+//       args: {
+//         id: { type: GraphQLInt },
+//         limit: { type: GraphQLInt },
+//       },
+//       resolve(parent, args) {
+//         console.log(args);
+//         const { limit } = args;
+//         return userData.slice(0, limit);
+//       },
+//     },
+//   },
+// });
 const Mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
