@@ -14,22 +14,25 @@ export default function Form() {
   const [createUnit, { data, loading, error }] =
     useMutation(CREATE_UNIT_MUTATION);
 
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
   if (error) {
     console.log(error);
   }
 
   const addUnit = (e) => {
-    e.preventDefault();
     console.log(unitName, "this");
     createUnit({
       variables: {
         unitName: unitName,
-        moveSpeed: moveSpeed,
-        shootValue: shootValue,
-        fightValue: fightValue,
-        healthPoints: healthPoints,
-        leadershipValue: leadershipValue,
-        pointValue: pointValue,
+        moveSpeed: parseInt(moveSpeed),
+        shootValue: parseInt(shootValue),
+        fightValue: parseInt(fightValue),
+        healthPoints: parseInt(healthPoints),
+        leadershipValue: parseInt(leadershipValue),
+        pointValue: parseInt(pointValue),
       },
     });
   };

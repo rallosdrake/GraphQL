@@ -4,11 +4,13 @@ import { LOAD_UNITS } from "../GraphQL/Queries";
 
 function AllUnits() {
   const [units, setUnits] = useState([]);
+  const [army, setArmy] = useState([]);
 
   const { error, loading, data } = useQuery(LOAD_UNITS);
-
-  console.log(units);
-
+  console.log(army, "This is army");
+  const selectUnit = (unit) => {
+    setArmy([...army, unit]);
+  };
   useEffect(() => {
     if (data) {
       setUnits(data.getAllUnits);
@@ -22,17 +24,30 @@ function AllUnits() {
   }
 
   return (
-    <div>
+    <div className="unit-grid-container">
       {units.map((unit) => {
         return (
           <div key={unit.id} className="unit-container">
-            <div>Name: {unit.unitName}</div>
-            <div>Move Speed: {unit.moveSpeed}</div>
-            <div>Shoot Value: {unit.shootValue}</div>
-            <div>Fight Value: {unit.fightValue}</div>
-            <div>Health Points: {unit.healthPoints}</div>
-            <div>Leadership Value: {unit.leadershipValue}</div>
-            <div>Point Value: {unit.pointValue}</div>
+            <div className="name-header">Name:</div>
+            <p>{unit.unitName}</p>
+            <div className="name-header">Move Speed:</div>
+            <p>{unit.moveSpeed}</p>
+            <div className="name-header">Shoot Value:</div>
+            <p>{unit.shootValue}</p>
+            <div className="name-header">Fight Value:</div>
+            <p>{unit.fightValue}</p>
+            <div className="name-header">Health Points:</div>
+            <p>{unit.healthPoints}</p>
+            <div className="name-header">Leadership Value:</div>
+            <p>{unit.leadershipValue}</p>
+            <div className="name-header">Point Value:</div>
+            <p>{unit.pointValue}</p>
+            <button
+              onClick={() => selectUnit(unit)}
+              className="button-container"
+            >
+              Select
+            </button>
           </div>
         );
       })}
