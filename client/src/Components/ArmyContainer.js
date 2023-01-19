@@ -8,9 +8,16 @@ export default function ArmyContainer({ army }) {
     return total;
   }, 0);
 
+  const checker = (totalPoints) => {
+    if (totalPoints > 100) {
+      console.log("Too many points");
+    }
+  };
+
   return (
     <div>
       {army.map((unit) => {
+        checker(totalPoints);
         return (
           <div key={unit.id}>
             <p>{unit.unitName}</p>
