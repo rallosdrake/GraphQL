@@ -1,7 +1,13 @@
 import React from "react";
 
 export default function ArmyContainer({ army }) {
-  console.log(army);
+  const totalPoints = army.reduce((total, unit) => {
+    if (unit.pointValue) {
+      return total + unit.pointValue;
+    }
+    return total;
+  }, 0);
+
   return (
     <div>
       {army.map((unit) => {
@@ -11,6 +17,7 @@ export default function ArmyContainer({ army }) {
           </div>
         );
       })}
+      <p>{totalPoints}</p>
     </div>
   );
 }
