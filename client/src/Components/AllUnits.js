@@ -31,7 +31,11 @@ function AllUnits() {
       <div className="unit-grid-container">
         {units.map((unit) => {
           return (
-            <div key={unit.id} className="unit-container">
+            <div
+              key={unit.id}
+              className="unit-container"
+              data-testid="unit-container"
+            >
               <div className="name-header">Name:</div>
               <p>{unit.unitName}</p>
               <div className="name-header">Move Speed:</div>
@@ -49,6 +53,7 @@ function AllUnits() {
               <button
                 onClick={() => selectUnit(unit)}
                 className="button-container"
+                data-testid="button-container"
               >
                 Select
               </button>
@@ -56,7 +61,7 @@ function AllUnits() {
           );
         })}
       </div>
-      <div className="army-container">
+      <div className="army-container" data-testid="army-container">
         <ArmyContainer army={army} clearArmy={clearArmy} />
         <button onClick={clearArmy}>Clear</button>
       </div>
