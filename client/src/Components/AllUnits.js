@@ -2,23 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { LOAD_UNITS } from "../GraphQL/Queries";
 import ArmyContainer from "./ArmyContainer";
-
+import useAllUnits from "../Custom Hooks/useAllUnits";
 function AllUnits() {
-  const [units, setUnits] = useState([]);
-  const [army, setArmy] = useState([]);
-
-  const { error, loading, data } = useQuery(LOAD_UNITS);
-  const selectUnit = (unit) => {
-    setArmy([...army, unit]);
-  };
-  const clearArmy = () => {
-    setArmy([]);
-  };
-  useEffect(() => {
-    if (data) {
-      setUnits(data.getAllUnits);
-    }
-  }, [data]);
+  const { units, army, error, loading, selectUnit, clearArmy } = useAllUnits();
   if (error) {
     return alert(error);
   }
