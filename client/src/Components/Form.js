@@ -1,61 +1,100 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { CREATE_USER_MUTATION } from "../GraphQL/mutations";
+import { CREATE_UNIT_MUTATION } from "../GraphQL/mutations";
+
 export default function Form() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [unitName, setUnitName] = useState("");
+  const [moveSpeed, setMoveSpeed] = useState(0);
+  const [shootValue, setShootValue] = useState(0);
+  const [fightValue, setFightValue] = useState(0);
+  const [healthPoints, setHealthPoints] = useState(0);
+  const [leadershipValue, setLeadershipValue] = useState(0);
+  const [pointValue, setPointValue] = useState(0);
 
-  const [createUser, { error }] = useMutation(CREATE_USER_MUTATION);
+  const [createUnit, { data, loading, error }] =
+    useMutation(CREATE_UNIT_MUTATION);
 
-  const addUser = () => {
-    createUser({
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    console.log(error);
+  }
+
+  const addUnit = (e) => {
+    createUnit({
       variables: {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
+        unitName: unitName,
+        moveSpeed: parseInt(moveSpeed),
+        shootValue: parseInt(shootValue),
+        fightValue: parseInt(fightValue),
+        healthPoints: parseInt(healthPoints),
+        leadershipValue: parseInt(leadershipValue),
+        pointValue: parseInt(pointValue),
       },
     });
-    if (error) {
-      console.log(error);
-    }
   };
 
   return (
-    <div>
-      <div>
-        <input
-          type="text"
-          placeholder="First Name"
-          onChange={(e) => {
-            setFirstName(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          onChange={(e) => {
-            setLastName(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <button onClick={addUser}> Create User</button>
-      </div>
-    </div>
+    <form onSubmit={addUnit}>
+      <input
+        type="text"
+        placeholder="Unit Name"
+        value={unitName}
+        onChange={(e) => {
+          setUnitName(e.target.value);
+        }}
+      />
+      <input
+        type="number"
+        placeholder="Move Speed"
+        value={moveSpeed}
+        onChange={(e) => {
+          setMoveSpeed(e.target.value);
+        }}
+      />
+      <input
+        type="number"
+        placeholder="Shoot Value"
+        value={shootValue}
+        onChange={(e) => {
+          setShootValue(e.target.value);
+        }}
+      />
+      <input
+        type="number"
+        placeholder="Fight Value"
+        value={fightValue}
+        onChange={(e) => {
+          setFightValue(e.target.value);
+        }}
+      />
+      <input
+        type="number"
+        placeholder="Health Points"
+        value={healthPoints}
+        onChange={(e) => {
+          setHealthPoints(e.target.value);
+        }}
+      />
+      <input
+        type="number"
+        placeholder="Leadership Value"
+        value={leadershipValue}
+        onChange={(e) => {
+          setLeadershipValue(e.target.value);
+        }}
+      />
+      <input
+        type="number"
+        placeholder="Point Value"
+        value={pointValue}
+        onChange={(e) => {
+          setPointValue(e.target.value);
+        }}
+      />
+      <button type="submit">Create Unit</button>
+    </form>
   );
 }
