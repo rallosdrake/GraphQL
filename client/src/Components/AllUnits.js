@@ -8,13 +8,14 @@ function AllUnits() {
   const [army, setArmy] = useState([]);
 
   const { error, loading, data } = useQuery(LOAD_UNITS);
-  console.log(army, "This is army");
   const selectUnit = (unit) => {
     setArmy([...army, unit]);
   };
+  const clearArmy = () => {
+    setArmy([]);
+  };
   useEffect(() => {
     if (data) {
-      console.log("useEffect");
       setUnits(data.getAllUnits);
     }
   }, [data]);
@@ -55,7 +56,10 @@ function AllUnits() {
           );
         })}
       </div>
-      <ArmyContainer />
+      <div className="army-container">
+        <ArmyContainer army={army} clearArmy={clearArmy} />
+        <button onClick={clearArmy}>Clear</button>
+      </div>
     </div>
   );
 }

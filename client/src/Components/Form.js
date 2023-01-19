@@ -23,7 +23,6 @@ export default function Form() {
   }
 
   const addUnit = (e) => {
-    console.log(unitName, "this");
     createUnit({
       variables: {
         unitName: unitName,
