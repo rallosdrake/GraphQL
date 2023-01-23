@@ -1,10 +1,18 @@
-.App {
+@import "./unit-grid";
+@import "./variable";
+
+// Mixin
+@mixin flexCenter($height) {
   text-align: center;
-  background-color: $backGroundColor;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  height: $height;
+}
+
+.App {
+  background-color: $backGroundColor;
+  @include flexCenter(100vh);
   .name-header {
     font-weight: bold;
   }
@@ -23,6 +31,3 @@
   margin-left: 10%;
   margin-right: 10%;
 }
-
-@import "./unit-grid";
-@import "./variable";
