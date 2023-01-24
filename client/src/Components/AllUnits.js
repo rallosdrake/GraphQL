@@ -49,7 +49,9 @@ function AllUnits() {
       </div>
       <div className="army-container" data-testid="army-container">
         <ArmyContainer army={army} clearArmy={clearArmy} />
-        <button onClick={clearArmy}>Clear</button>
+        <button onClick={clearArmy} data-testid="clear-button">
+          Clear
+        </button>
       </div>
     </div>
   );

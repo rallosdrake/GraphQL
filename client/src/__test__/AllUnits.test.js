@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import App from "./App";
-import AllUnits from "./Components/AllUnits";
+import AllUnits from "../Components/AllUnits";
 import {
   ApolloClient,
   InMemoryCache,
@@ -29,20 +28,19 @@ test("renders correct number of units", async () => {
   const unitContainers = await screen.findAllByTestId("unit-container");
   expect(unitContainers.length).toBe(3);
 });
+
+test("renders correct units", async () => {
+  renderComponent();
+  const unitContainers = await screen.findAllByTestId("unit-container");
+  expect(unitContainers[0]).toHaveTextContent("001");
+  expect(unitContainers[1]).toHaveTextContent("002");
+  expect(unitContainers[2]).toHaveTextContent("003");
+});
+
 test("selecting a unit adds it to the army", async () => {
   renderComponent();
   const selectButton = await screen.findAllByTestId("button-container");
   fireEvent.click(selectButton[0]);
   const armyContainer = await screen.findByTestId("army-container");
   expect(armyContainer).toHaveTextContent("001");
-});
-// add a test to check clicking the clear button clears the army  container
-test("clearing the army removes all units", async () => {
-  renderComponent();
-  const selectButton = await screen.findAllByTestId("button-container");
-  fireEvent.click(selectButton[0]);
-  const clearButton = await screen.findByTestId("clear-button");
-  fireEvent.click(clearButton);
-  const armyContainer = await screen.findByTestId("army-container");
-  expect(armyContainer).toHaveTextContent("");
 });

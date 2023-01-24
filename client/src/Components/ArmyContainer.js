@@ -15,7 +15,7 @@ export default function ArmyContainer({ army }) {
   };
 
   return (
-    <div>
+    <div data-testid="army-container">
       {army.map((unit) => {
         checker(totalPoints);
         return (
