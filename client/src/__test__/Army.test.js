@@ -12,7 +12,7 @@ const armyBlank = [
   {
     __typename: "Unit",
     id: 1,
-    unitName: "Unit 0001",
+    unitName: "Test Unit",
     moveSpeed: 6,
     shootValue: 4,
     fightValue: 5,

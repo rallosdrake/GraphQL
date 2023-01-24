@@ -39,8 +39,8 @@ test("renders correct units", async () => {
 
 test("selecting a unit adds it to the army", async () => {
   renderComponent();
-  const selectButton = await screen.findAllByTestId("button-container");
-  fireEvent.click(selectButton[0]);
+  const selectButtons = await screen.findAllByTestId("button-container");
+  fireEvent.click(selectButtons[0]);
   const armyContainer = await screen.findByTestId("army-container");
   expect(armyContainer).toHaveTextContent("001");
 });
