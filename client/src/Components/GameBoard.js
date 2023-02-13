@@ -14,7 +14,12 @@ export default function GameBoard() {
   return (
     <>
       <div>
-        <button onClick={() => setVisible(!visible)}>Show Board</button>
+        <button
+          data-testid="show-board-button"
+          onClick={() => setVisible(!visible)}
+        >
+          Show Board
+        </button>
       </div>
       {visible && (
         <div className="board-container">

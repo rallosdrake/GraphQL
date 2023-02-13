@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
 import AllUnits from "./Components/AllUnits";
+import GameBoard from "./Components/GameBoard";
 import {
   ApolloClient,
   InMemoryCache,
@@ -20,6 +21,7 @@ function renderComponent() {
   return render(
     <ApolloProvider client={client}>
       <AllUnits />
+      <GameBoard />
     </ApolloProvider>
   );
 }
@@ -47,8 +49,10 @@ test("clearing the army removes all units", async () => {
   expect(armyContainer).toHaveTextContent("0");
 });
 // write me a test to ensure the GameBoard component renders the correct number of cells
-test.only("renders correct number of cells", async () => {
+test("renders correct number of cells", async () => {
   renderComponent();
+  const ShowBoardButton = await screen.findByTestId("show-board-button");
+  fireEvent.click(ShowBoardButton);
   const cellContainers = await screen.findAllByTestId("board-col");
   expect(cellContainers.length).toBe(16);
 });
