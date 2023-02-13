@@ -34,8 +34,8 @@ function App() {
     <div className="App">
       <ApolloProvider client={client}>
         <GameBoard />
-        {/* <Form />
-        <AllUnits /> */}
+        <Form />
+        <AllUnits />
       </ApolloProvider>
     </div>
   );
