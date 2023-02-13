@@ -14,7 +14,7 @@ export default function GameBoard() {
   return (
     <>
       <div>
-        <button onClick={() => setVisible(!visible)}>Toggle</button>
+        <button onClick={() => setVisible(!visible)}>Show Board</button>
       </div>
       {visible && (
         <div className="board-container">
@@ -22,18 +22,9 @@ export default function GameBoard() {
             <tbody>
               {board.map((row, rowIndex) => (
                 <tr key={rowIndex} className="board-row">
-                  {row.map(
-                    (square, colIndex) => (
-                      index++,
-                      (
-                        <BoardCell
-                          key={colIndex}
-                          value={square}
-                          index={index}
-                        />
-                      )
-                    )
-                  )}
+                  {row.map((square, colIndex) => (
+                    <BoardCell key={colIndex} value={square} index={index++} />
+                  ))}
                 </tr>
               ))}
             </tbody>
