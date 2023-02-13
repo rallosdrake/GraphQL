@@ -47,7 +47,16 @@
   background-color: aliceblue;
   width: 80px;
   height: 80px;
+}
+.board-col {
+  position: relative;
+}
 
-  /* text-align: center;
-  vertical-align: middle; */
+.board-col:hover {
+  background-color: yellow;
+}
+.index-number {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
