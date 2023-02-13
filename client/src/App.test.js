@@ -46,3 +46,9 @@ test("clearing the army removes all units", async () => {
   const armyContainer = await screen.findByTestId("army-container");
   expect(armyContainer).toHaveTextContent("0");
 });
+// write me a test to ensure the GameBoard component renders the correct number of cells
+test.only("renders correct number of cells", async () => {
+  renderComponent();
+  const cellContainers = await screen.findAllByTestId("board-col");
+  expect(cellContainers.length).toBe(16);
+});
